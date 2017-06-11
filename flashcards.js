@@ -2,7 +2,8 @@
 var k = 0;
 
 
-console.log("press '?' to begin")
+console.log("press '?'  or 'new' to begin" + "\n");
+console.log("? begins the quiz | new allows you to create a new flashcard");
 var inquirer = require("inquirer");
 var file = require('fs');
 
@@ -49,9 +50,21 @@ var card5 = new TriviaCard("8 * 2 = ", "16", 5);
 
 
 cardArray.push(card1, card2, card3, card4, card5);
+for (var i = 0; i < cardArray.length; i++) {
+	file.appendFile("questionLogFile.txt", cardArray[i].question + "_" + cardArray[i].responce + " | ", function(err){
+		}); 
+}
+
 // console.log(cardArray);
 
-
+if (process.argv[2] === 'new') {
+	console.log("use the following format: Question, Answer, questionNumber");
+	var userQuestion =  process.argv[2];
+	var userQuestionAnswer =  process.argv[3];
+	var userQuestionNumber = process.argv[4];
+	var userCard = new TriviaCard(user, userQuestionAnswer, userQuestionNumber );
+	cardArray.push(userCard);
+}
 
 //ask questions function
 
