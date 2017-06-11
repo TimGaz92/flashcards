@@ -26,6 +26,7 @@ function TriviaCard(question, responce, cardNum){
 								user.score++;
 								console.log("your score is: " + user.score);
 								k++;
+								askQuestions();
 								}
 							else {
 								console.log("incorrect, try again");
@@ -35,6 +36,7 @@ function TriviaCard(question, responce, cardNum){
 							}
 //SOMETHING WENT WRONG WITH THE ANSWERS, IT NO LONGER RECOGNIZES INCORRECT RESPONCES
 		});
+		// askQuestions();
 	}
 }	
 var user = {
