@@ -9,10 +9,10 @@ var file = require('fs');
 
 var cardArray = [];
 //trivia card constructor
-function TriviaCard(question, responce, cardNum){
+function TriviaCard(question, responce, cardType){
 	this.question = question;
 	this.responce = responce;
-	this.cardNum = cardNum;
+	this.cardNum = cardType; 
 	this.ask = function(){
 		inquirer.prompt([
 
@@ -42,16 +42,16 @@ var user = {
 	score:0,
 }
 //these are the pre-set standard questions
-var card1 = new TriviaCard("Who's the best developer?", "tim", 1);
-var card2 = new TriviaCard("What does S.T.I.G stand for?", "secure technical information guidelines", 2);
-var card3 = new TriviaCard("which is better a CASP or a Security+?", "CASP", 3);
-var card4 = new TriviaCard("what state is Ft. Huachuca in?", "Arizona", 4);
-var card5 = new TriviaCard("8 * 2 = ", "16", 5);
-var card6 = new TriviaCard("Brian Griffen is a...?", "dog", 6);
+var card1 = new TriviaCard("Who's the best developer?", "tim", "regular");
+var card2 = new TriviaCard("What does S.T.I.G stand for?", "secure technical information guidelines", "regular");
+var card3 = new TriviaCard("which is better a CASP or a Security+?", "CASP", "regular");
+var card4 = new TriviaCard("what state is Ft. Huachuca in?", "Arizona", "regular");
+var card5 = new TriviaCard("8 * 2 = ", "16", "regular");
+var card6 = new TriviaCard("Brian Griffen is a...?", "dog", "cloze");
 
-cardArray.push(card1, card2, card3, card4, card5);
+cardArray.push(card1, card2, card3, card4, card5, card6);
 for (var i = 0; i < cardArray.length; i++) {
-	file.appendFile("questionLogFile.txt", cardArray[i].question + "_" + cardArray[i].responce + " | ", function(err){
+	file.appendFile("questionLogFile.txt", cardArray[i].question + "_" + cardArray[i].responce + "_" + cardArray[i].cardType + " | ", function(err){
 		}); 
 }
 
